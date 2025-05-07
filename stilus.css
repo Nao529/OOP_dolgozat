@@ -1,4 +1,28 @@
-* {
-    width: 80%;
-    max-width: 800px;
+body {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+}
+
+.card-title {
+    font-size: 1.25rem;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+}
+
+.card {
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        padding: 1rem;
+    }
 }

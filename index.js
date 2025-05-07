@@ -1,7 +1,17 @@
-import szenvedoMondatok from "TesztKerdes";
+import { szenvedoMondatok } from "./angol.js";
+import TesztKerdesek from "./TesztKerdesek.js";
 
-const TAROLO = document.querySelector(".tarolo");
+document.addEventListener("DOMContentLoaded", () => {
+  const tesztElem = document.querySelector("#tesztContainer");
 
-function peldanyosit(adat) {
-    new TesztKerdes(adat, TAROLO);
-}
+  const kerdesek = szenvedoMondatok.filter(
+    item => typeof item === "object" && "mondat" in item && "valasztas" in item
+  );
+
+  if (kerdesek.length === 0) {
+    tesztElem.innerHTML = `<p class="text-danger">Nem található érvényes kérdés az angol.js fájlban!</p>`;
+    console.error("Nem található megfelelő struktúrájú kérdés.");
+    return;
+  }
+  new TesztKerdesek(kerdesek, tesztElem);
+});
